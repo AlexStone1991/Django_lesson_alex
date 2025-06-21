@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тестовый шаблон</title>
+</head>
+    <body>
+    <center><h1>Тестовый шаблон для опытов</h1></center>
+    <center><h2>Комментарий HTML и шаблонизатор</h2></center>
+    {% comment %} Это не будет видно в браузере {% endcomment %}
+    <!-- Это будет видно в браузере -->
+    <center><h2>Переменные шаблонизатора</h2></center>
+        <p>{{ variable_1}} - Переменная Django</p>
+    <center><h3>Список в шаблонизаторе</h3></center>
+        <p>Весь Список: {{ test_list}}</p>
+        <p>Элемент 0: {{ test_list.0}}</p>
+        <p>Вcего элементов в списке: {{ test_list|length}}</p>
+    <center><h3>Словарь в шаблонизаторе</h3></center>
+        <p>Весь словарь: {{ test_dict}}</p>
+        <p>Значение по ключу "msster": {{ test_dict.master}}</p>
+        <p>Попробуем получить длину словоря: {{ test_dict|length}}</p>
+        <center><h3>Обьект шаблонизатора</h3></center>
+        <p>Весь Обьект: {{test_person}}</p>
+        <p>Имя: {{test_person.name}}</p>
+        <p>Возраст: {{test_person.age}}</p>
+        <p>Вызов метода: {{test_person.say_my_name}}</p>
+    </body>
+</html>
