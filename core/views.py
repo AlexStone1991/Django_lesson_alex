@@ -12,7 +12,10 @@ def thanks(request):
     """
     Отвечает за маршрут  '/thanks/'
     """
-    return render(request, 'thanks.html')
+    context = {
+        "test_var": "Привет с базового шаблона"
+    }
+    return render(request, 'thanks.html', context=context)
 
 def orders_list(request):
     """
