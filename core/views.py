@@ -1,6 +1,7 @@
 # core/views.py
 from django.shortcuts import render, HttpResponse
 from .data import orders, services, masters
+from django.db.models import Q
 
 def landing(request):
     """
