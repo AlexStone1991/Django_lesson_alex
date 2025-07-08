@@ -2,6 +2,7 @@
 *__pycache__
 .env
 db.sqlite3
-hw
+*hw
 db.sqlite3-wal
 db.sqlite3-shm
+*media/
