@@ -1,32 +1,80 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
-    {% comment %} Открываем BS5 контейнер и делаем секции-полосы лендинги {% endcomment %}
-    <div class="container mt-5">
-        {% comment %} Полоса - фото + описание
-        2 колонки первая - 4, вторая - 8
-        В первой описание
-        Во второй фото
-        {% endcomment %}
-        <div class="row">
-            <h2>Барбершоп "Арбуз"</h2>
 
+{# Hero секция #}
+<section id="top" class="py-5">
+    <div class="container">
+        <div class="row align-items-center py-5">
+            <div class="col-md-6">
+                <h1 class="display-4 fw-bold mb-4">Барбершоп «Арбуз»</h1>
+                <p class="lead mb-4">Классическое мужское искусство стрижки и бритья в атмосфере дореволюционной России</p>
+                <a href="{% url 'order-page' %}" class="btn btn-lg px-5" style="background-color: var(--brand-gold); color: white; border: none;">
+                    <i class="bi bi-calendar-check me-2"></i>Записаться
+                </a>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="{% static 'images/barber.webp' %}" class="img-fluid rounded" alt="Барбер за работой" style="max-height: 400px;">
+            </div>
         </div>
-        {% comment %} 
-        Блок с мастерами
-        {% endcomment %}
-        <div class="row">
-            <h2 id="masters">Мастера</h2>
+    </div>
+</section>
 
+{# Секция "Мастера" #}
+<section id="masters" class="py-5" style="background-color: var(--bs-body-bg);">
+    <div class="container">
+        <h2 class="text-center mb-5">Наши мастера</h2>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+            {% for master in masters %}
+                {% include 'include_master_card.html' %}
+            {% empty %}
+                <div class="col-12">
+                    <p class="text-center text-muted">Информация о мастерах временно недоступна.</p>
+                </div>
+            {% endfor %}
         </div>
-        {% comment %} 
-        Блок с услугами
-        {% endcomment %}
-        <div class="row">
+    </div>
+</section>
 
+{# Секция "Услуги" #}
+<section id="services" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">Наши услуги</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for service in services %}
+                {% include 'include_service_card.html' %}
+            {% empty %}
+                <div class="col-12">
+                    <p class="text-center text-muted">Услуги временно недоступны.</p>
+                </div>
+            {% endfor %}
         </div>
-        <div class="row">
+    </div>
+</section>
 
+{# Секция "Отзывы" #}
+<section id="reviews" class="py-5" style="background-color: var(--brand-green); color: white;">
+    <div class="container">
+        <h2 class="text-center mb-5 text-white">Отзывы клиентов</h2>
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                {% include 'include_reviews_carousel.html' %}
+            </div>
         </div>
+    </div>
+</section>
+
+{# Секция "Записаться" (теперь просто ссылка) #}
+<section id="get-order" class="py-5 bg-light text-center">
+    <div class="container">
+        <h2 class="text-center mb-4">Готовы преобразиться?</h2>
+        <p class="lead mb-4">Нажмите на кнопку, чтобы перейти на страницу записи и выбрать удобное время.</p>
+        <a href="{% url 'order-page' %}" class="btn btn-success btn-lg px-5">
+            Перейти к форме записи
+        </a>
+    </div>
+</section>
+
 {% endblock content %}
 
 {% comment %} #masters
