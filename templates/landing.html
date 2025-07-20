@@ -20,6 +20,49 @@
     </div>
 </section>
 
+<section id="masters-section" class="mb-5 py-3">
+        <h2 class="text-center mb-4">Наши мастера</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for master in masters %}
+            <div class="col">
+                <div class="card h-100 border-warning shadow-sm">
+                    <div class="ratio ratio-1x1">
+                    {% if master.photo %}
+                    <img src="{{ master.photo.url }}" class="card-img-top" alt="{{ master.name }}" style="height: 200px; object-fit: cover;">
+                    {% else %}
+                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="bi bi-person-badge fs-1 text-muted"></i>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ master.name }}</h5>
+                        <p class="card-text">
+                            <i class="bi bi-star-fill text-warning"></i>
+                            Опыт: {{ master.experience }} лет
+                        </p>
+                        <div class="d-flex justify-content-between">
+                            <a href="{% url 'master_detail' master.id %}" class="btn btn-outline-primary">
+                                <i class="bi bi-info-circle"></i> Подробнее
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
 {# Секция "Мастера" #}
 <section id="masters" class="py-5" style="background-color: var(--bs-body-bg);">
     <div class="container">
