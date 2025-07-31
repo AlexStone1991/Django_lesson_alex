@@ -11,9 +11,11 @@ from core.views import (
     order_detail,
     order_create,
     services_list,
-    order_page,
     service_create,
     service_update,
+    order_update,
+    review_create,
+    get_services_by_master,
 )
 
 
@@ -24,10 +26,14 @@ urlpatterns = [
     path("orders/", orders_list, name="orders"),
     path("orders/<int:order_id>/", order_detail, name="order_detail"),
     path("order/create/", order_create, name="order-create"),
+    path("review/create/", review_create, name="review-create"),
     path("services/", services_list, name="services-list"),
-    path("order/", order_page, name="order-page"),
     path("service/create/", service_create, name="service-create"),
     path("service/update/<int:service_id>/", service_update, name="service-update"),
+    path("order/update/<int:order_id>/", order_update, name="order-update"),
+
+    # AJAX вью для отдачи массива объектов услуг по ID мастера
+    path("ajax/services/<int:master_id>/", get_services_by_master, name="get_services_by_master"),
 ]
 
 # Добавляем Статику и Медиа ЕСЛИ в режиме разработки

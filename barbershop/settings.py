@@ -136,46 +136,19 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Где будет видно панель Django Debug Toolbar
 INTERNAL_IPS = ["127.0.0.1"]
 
-JAZZMIN_SETTINGS = {
-    "site_title": "Панель управления Арбуз",
-    "site_header": "Арбуз",
-    "site_brand": "Арбуз",
-    "welcome_sign": "Добро пожаловать в панель управления барбершопом Арбуз",
-    "copyright": "Arbuz Barber Shop Ltd.",
-    "custom_css": "css/admin.css",
-    "show_ui_builder": True,
+MISTRAL_API_KEY = os.getenv("MISTRAL_API_KEY")
+
+MISTRAL_MODERATIONS_GRADES = {
+    "hate_and_discrimination": 0.1,  # ненависть и дискриминация
+    "sexual": 0.1,  # сексуальный
+    "violence_and_threats": 0.1,  # насилие и угрозы
+    "dangerous_and_criminal_content": 0.1,  # опасный и криминальный контент
+    "selfharm": 0.1,  # самоповреждение
+    "health": 0.1,  # здоровье
+    "financial": 0.1,  # финансовый
+    "law": 0.1,  # закон
+    "pii": 0.1,  # личная информация
 }
 
-JAZZMIN_UI_TWEAKS = {
-    "navbar_small_text": False,
-    "footer_small_text": False,
-    "body_small_text": True,
-    "brand_small_text": False,
-    "brand_colour": "navbar-dark",
-    "accent": "accent-primary",
-    "navbar": "navbar-white navbar-light",
-    "no_navbar_border": False,
-    "navbar_fixed": False,
-    "layout_boxed": False,
-    "footer_fixed": False,
-    "sidebar_fixed": True,
-    "sidebar": "sidebar-dark-warning",
-    "sidebar_nav_small_text": False,
-    "sidebar_disable_expand": False,
-    "sidebar_nav_child_indent": False,
-    "sidebar_nav_compact_style": False,
-    "sidebar_nav_legacy_style": True,
-    "sidebar_nav_flat_style": False,
-    "theme": "litera",
-    "dark_mode_theme": None,
-    "button_classes": {
-        "primary": "btn-outline-primary",
-        "secondary": "btn-outline-secondary",
-        "info": "btn-outline-info",
-        "warning": "btn-outline-warning",
-        "danger": "btn-outline-danger",
-        "success": "btn-outline-success",
-    },
-    "actions_sticky_top": True,
-}
-
+TELEGRAM_BOT_API_KEY = os.getenv("TELEGRAM_BOT_API_KEY")
+TELEGRAM_USER_ID = os.getenv("TELEGRAM_USER_ID")
