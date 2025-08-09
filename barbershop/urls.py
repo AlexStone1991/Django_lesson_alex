@@ -5,35 +5,35 @@ from django.contrib import admin
 from django.urls import path
 from debug_toolbar.toolbar import debug_toolbar_urls
 from core.views import (
-    landing,
-    thanks,
-    orders_list,
-    order_detail,
-    order_create,
-    services_list,
-    service_create,
-    service_update,
-    order_update,
-    review_create,
-    get_services_by_master,
+    LandingTemplateView,
+    ThanksTemplateView,
+    OrderListView,
+    OrderDetailView,
+    OrderCreateView,
+    ServicesListView,
+    ServiceCreateView,
+    ServiceUpdateView,
+    OrderUpdateView,
+    ReviewCreateView,
+    AjaxMasterServicesView,
 )
 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", landing, name="landing"),
-    path("thanks/", thanks, name="thanks"),
-    path("orders/", orders_list, name="orders"),
-    path("orders/<int:order_id>/", order_detail, name="order_detail"),
-    path("order/create/", order_create, name="order-create"),
-    path("review/create/", review_create, name="review-create"),
-    path("services/", services_list, name="services-list"),
-    path("service/create/", service_create, name="service-create"),
-    path("service/update/<int:service_id>/", service_update, name="service-update"),
-    path("order/update/<int:order_id>/", order_update, name="order-update"),
+    path("", LandingTemplateView.as_view(), name="landing"),
+    path("thanks/<str:source>/", ThanksTemplateView.as_view(), name="thanks"),
+    path("orders/", OrderListView.as_view(), name="orders"),
+    path("orders/<int:order_id>/", OrderDetailView.as_view(), name="order_detail"),
+    path("order/create/", OrderCreateView.as_view(), name="order-create"),
+    path("review/create/", ReviewCreateView.as_view(), name="review-create"),
+    path("services/", ServicesListView.as_view(), name="services-list"),
+    path("service/create/", ServiceCreateView.as_view(), name="service-create"),
+    path("service/update/<int:service_id>/", ServiceUpdateView.as_view(), name="service-update"),
+    path("order/update/<int:order_id>/", OrderUpdateView.as_view(), name="order-update"),
 
     # AJAX вью для отдачи массива объектов услуг по ID мастера
-    path("ajax/services/<int:master_id>/", get_services_by_master, name="get_services_by_master"),
+    path("ajax/services/<int:master_id>/", AjaxMasterServicesView.as_view(), name="get_services_by_master"),
 ]
 
 # Добавляем Статику и Медиа ЕСЛИ в режиме разработки
