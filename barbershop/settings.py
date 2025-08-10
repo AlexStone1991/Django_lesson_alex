@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "django_extensions",
     "debug_toolbar",
     "core",
+    "users",
 ]
 
 MIDDLEWARE = [
@@ -151,3 +152,6 @@ MISTRAL_MODERATIONS_GRADES = {
 
 TELEGRAM_BOT_API_KEY = os.getenv("TELEGRAM_BOT_API_KEY")
 TELEGRAM_USER_ID = os.getenv("TELEGRAM_USER_ID")
+
+LOGIN_URL = '/users/login/'
+LOGIN_REDIRECT_URL = '/'

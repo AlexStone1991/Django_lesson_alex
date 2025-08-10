@@ -2,7 +2,7 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from debug_toolbar.toolbar import debug_toolbar_urls
 from core.views import (
     LandingTemplateView,
@@ -31,6 +31,7 @@ urlpatterns = [
     path("service/create/", ServiceCreateView.as_view(), name="service-create"),
     path("service/update/<int:service_id>/", ServiceUpdateView.as_view(), name="service-update"),
     path("order/update/<int:order_id>/", OrderUpdateView.as_view(), name="order-update"),
+    path("users/", include("users.urls")),
 
     # AJAX вью для отдачи массива объектов услуг по ID мастера
     path("ajax/services/<int:master_id>/", AjaxMasterServicesView.as_view(), name="get_services_by_master"),
